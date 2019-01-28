@@ -30,16 +30,21 @@ namespace Assignment___1___solution
             int[] arr = new int[] { 1, 2, 3, 2, 2, 1, 3, 2 };
             computeFrequency(arr);
 
-            // write your self-reflection here as a comment
-
+            // write your self-reflection here as a comment -
+            
+            // This Assignment was useful for understanding and applying basic concepts like looping, program structuring, conditional statement use,
+            // method calling, passing parameters, data types usage.
+            // It was also very useful for me for practising and understanding debugger and compiler concepts. I put break-points for checking the program-flow, checking/removing errors and validation.
+            // good practise for logic building.
+            // I learned how to use gitHub and push the files.
         }
 
         public static void printPrimeNumbers(int x, int y)      // This method prints all the prime numbers between x and y
         {
             try
             {
-
-                Console.WriteLine("Prime numbers between {0} and {1} are: \n", x, y);
+                Console.WriteLine("Question 1 solution");
+                Console.Write("Prime numbers between {0} and {1} are: \n", x, y);
                 for (int i = x; i <= y; i++)        // iteration to check every number if it is prime or not
                 {
                     bool value = isPrime(i);    // calling this method and passing number to this method to compute if a number is prime or not.
@@ -80,6 +85,8 @@ namespace Assignment___1___solution
 
         public static double getSeriesResult(int n)    // This method computes the series 1/2 – 2!/3 + 3!/4 – 4!/5 --- n     * where ! means factorial
         {
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("Question 2 - solution");
             double result = 0;
             try
             {
@@ -122,19 +129,21 @@ namespace Assignment___1___solution
 
         public static long decimalToBinary(long n)      //This method converts a number from decimal (base 10) to binary (base 2).
         {
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("Question 3 - solution");
             string reverse = "";
             try
             {
                 int quot;
                 string rem = "";
-                while (n >= 1)                      // getting the quotient and the reminder for the given number
+                while (n >= 1)                      // getting the quotient for next iteration, getting the reminder for binary digit and repeating until quotient = 0
                 {
                     quot = Convert.ToInt32(n / 2);
                     rem += (n % 2).ToString();
                     n = quot;
                 }
 
-                for (int i = rem.Length - 1; i >= 0; i--)
+                for (int i = rem.Length - 1; i >= 0; i--)       // getting the binary number
                 {
                     reverse = reverse + rem[i];
                 }
@@ -148,18 +157,21 @@ namespace Assignment___1___solution
             return Convert.ToInt64(reverse);
         }
 
-        public static long binaryToDecimal(long n)
+        public static long binaryToDecimal(long n)      // This method converts a number from binary (base 2) to decimal (base 10).
         {
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("Question 4 - solution");
             long deci_val = 0;
             try
             {
                 long bin_val, base_val = 1, rem;
                 bin_val = n;
 
-                while (bin_val > 0)
+                for(int i=0; bin_val>0;i++)     // this loop is used for getting the bits (from right most bit to left) and multipying each by power of 2 and for computation of final decimal number computation.
                 {
                     rem = bin_val % 10;
-                    deci_val = deci_val + rem * base_val;
+
+                    deci_val = deci_val +   rem* power(i); // this method is being called for calculation of power of 2
                     bin_val = bin_val / 10;
                     base_val = base_val * 2;
                 }
@@ -170,21 +182,33 @@ namespace Assignment___1___solution
             {
                 Console.WriteLine("Exception occured while computing binaryToDecimal()");
             }
-            return deci_val;
+            return deci_val;        // returning final decimal value
         }
 
-        public static void printTriangle(int n)
+        public static int power(int i)      // method to compute 2^n
         {
+            int ans = 1;
+            for (int j=0; j<i;j++)
+            {
+                ans = ans * 2;
+            }
+            return ans;
+        }
+
+        public static void printTriangle(int n)     // This method prints a triangle pattern using *
+        {
+            Console.WriteLine("********************************************************************");
+            Console.WriteLine("Question 5 - solution");
             try
             {
                 int i, j, k;
-                for (i = 1; i <= n; i++)
+                for (i = 1; i <= n; i++)            // iteration for row number
                 {
-                    for (j = i; j < n; j++)
+                    for (j = i; j < n; j++)         // iteration for printing space before *
                     {
                         Console.Write(" ");
                     }
-                    for (k = 1; k < (i * 2); k++)
+                    for (k = 1; k < (i * 2); k++)      // iteration for printing *
                     {
                         Console.Write("*");
                     }
@@ -198,15 +222,17 @@ namespace Assignment___1___solution
             }
         }
 
-        public static void computeFrequency(int[] a)
+        public static void computeFrequency(int[] a)        // This method computes the frequency of each element in the array
         {
+            Console.WriteLine("\n********************************************************************");
+            Console.WriteLine("Question 6 - solution");
             try
             {
-                int len = a.Length;
+                int len = a.Length;                         // getting length of array in a variable
                 int i, j, count = 0;
-                int[] countnum = new int[len];
+                int[] countnum = new int[len];              // array of same lenght as given array length for later purpose
 
-                for (i = 0; i < len; i++)
+                for (i = 0; i < len; i++)                   // loop used for getting frequency of numbers
                 {
                     count = 1;
                     for (j = i + 1; j < len; j++)
@@ -217,7 +243,7 @@ namespace Assignment___1___solution
                             countnum[j] = -1;
                         }
                     }
-                    if (countnum[i] != -1)
+                    if (countnum[i] != -1)              // storing frequency in this 'countnum' array
                     {
                         countnum[i] = count;
                     }
@@ -225,7 +251,7 @@ namespace Assignment___1___solution
 
                 Console.WriteLine("Number   Frequency");
 
-                for (i = 0; i < len; i++)
+                for (i = 0; i < len; i++)               // loop used to print numbers and their frequency
                 {
                     if (countnum[i] != -1)
                     {
